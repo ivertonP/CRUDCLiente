@@ -22,7 +22,7 @@ public class TelaCliente extends javax.swing.JFrame {
      */
     public TelaCliente() {
         initComponents();
-        listarjTable();
+        listarTabela(); //Carrega a tabela de clientes ao iniciar o programa
     }
 
     /**
@@ -44,14 +44,23 @@ public class TelaCliente extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        campoEmail = new javax.swing.JTextField();
+        campoTel = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela do Cliente");
+        setBackground(new java.awt.Color(0, 204, 204));
+        setForeground(new java.awt.Color(0, 204, 204));
 
-        jLabel1.setText("Nome do Cliente");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setText("Nome:");
 
-        jLabel2.setText("CPF do cliente");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setText("CPF:");
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton1.setText("Salvar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,6 +68,7 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton2.setText("Excluir");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,11 +81,11 @@ public class TelaCliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome do Cliente", "CPF do Cliente"
+                "Nome do Cliente", "CPF do Cliente", "e-mail do cliente", "Telefone do cliente"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -94,6 +104,7 @@ public class TelaCliente extends javax.swing.JFrame {
         });
         jTable2.setViewportView(jTable1);
 
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton3.setText("Alterar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,9 +112,18 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setBackground(new java.awt.Color(0, 204, 204));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/client.png"))); // NOI18N
-        jLabel3.setText("jLabel3");
+        jLabel3.setPreferredSize(new java.awt.Dimension(256, 256));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setText("e-mail:");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setText("Telefone:");
+
+        campoEmail.setPreferredSize(new java.awt.Dimension(6, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,47 +131,61 @@ public class TelaCliente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2)
-                            .addComponent(campoCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                            .addComponent(jLabel1)
-                            .addComponent(campoNome))
-                        .addGap(0, 153, Short.MAX_VALUE))
-                    .addComponent(jTable2, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)))
-                .addContainerGap())
+                        .addComponent(jButton3))
+                    .addComponent(jTable2, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2)
+                            .addComponent(campoCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                            .addComponent(jLabel1)
+                            .addComponent(campoNome))
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(campoEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(campoTel, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
                             .addComponent(jButton2)
-                            .addComponent(jButton3))))
-                .addGap(18, 18, 18)
+                            .addComponent(jButton3))
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(campoNome, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                            .addComponent(campoEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(campoCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                            .addComponent(campoTel))
+                        .addGap(6, 6, 6)))
                 .addComponent(jTable2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(42, Short.MAX_VALUE))
         );
@@ -160,90 +194,104 @@ public class TelaCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Inserir(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inserir
-        Cliente cliente = new Cliente();
-        
-        if(campoNome.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Digite os dados do cliente para inserir."); 
+        //Metodo utilizado para inserir um objeto cliente ao banco
+        Cliente cliente = new Cliente();        
+        if(campoCPF.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Digite os dados do cliente antes de inserir.");
         }
         else{
             cliente.setNome(campoNome.getText());
-            int CPF = Integer.parseInt(campoCPF.getText());
-            cliente.setCpf(CPF);
+            cliente.setCpf(campoCPF.getText());
+            cliente.setEmail(campoEmail.getText());
+            cliente.setTel(campoTel.getText());
             clienteDAO.save(cliente);
             AddRow();
             campoNome.setText("");
             campoCPF.setText("");
+            campoEmail.setText("");
+            campoTel.setText("");
         }
     }//GEN-LAST:event_Inserir
 
     private void Remover(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Remover
-        
-        if(campoNome.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Selecione algum cliente para excluir.");           
+        //Metodo utilizado para remover um cliente do banco
+        if(campoCPF.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Selecione algum cliente antes de excluir.");           
         }
         else{
             Cliente cliente = new Cliente();
             cliente.setNome(campoNome.getText());
-            int CPF = Integer.parseInt(campoCPF.getText());
-            cliente.setCpf(CPF);
+            cliente.setCpf(campoCPF.getText());
+            cliente.setEmail(campoEmail.getText());
+            cliente.setTel(campoTel.getText());
             clienteDAO.delete(cliente);
             RemoveRow();
             campoNome.setText("");
             campoCPF.setText("");
+            campoEmail.setText("");
+            campoTel.setText("");
         }
     }//GEN-LAST:event_Remover
 
     private void Alterar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Alterar
-        
+        //Metodo utilizado para fazer update nos dados de um objeto cliente no banco
         if(campoNome.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Selecione algum cliente para alterar.");  
+            JOptionPane.showMessageDialog(null, "Selecione algum cliente antes de alterar.");  
         }
         else{            
             jTable1.setValueAt(campoNome.getText(), jTable1.getSelectedRow(), 0);
+            jTable1.setValueAt(campoEmail.getText(), jTable1.getSelectedRow(), 2);
+            jTable1.setValueAt(campoTel.getText(), jTable1.getSelectedRow(), 3);
             Cliente cliente  = new Cliente();
             cliente.setNome(campoNome.getText());
-            int CPF = Integer.parseInt(campoCPF.getText());
-            cliente.setCpf(CPF);
+            cliente.setEmail(campoEmail.getText());
+            cliente.setTel(campoTel.getText());
+            cliente.setCpf(campoCPF.getText());
             clienteDAO.update(cliente);
             campoNome.setText("");
             campoCPF.setText("");
+            campoEmail.setText("");
+            campoTel.setText("");
         }
     }//GEN-LAST:event_Alterar
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        //Metodo utilizado para permitir o preenchimento dos textfields ao usar o clique do mouse
         if(jTable1.getSelectedRow() != -1){
             campoNome.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
             campoCPF.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
+            campoEmail.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
+            campoTel.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString());
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
+        //Metodo utilizado para permitir o preenchimento dos textfields ao usar a seta do teclado
         if(jTable1.getSelectedRow() != -1){
             campoNome.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
             campoCPF.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
+            campoEmail.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
+            campoTel.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString());
         }
     }//GEN-LAST:event_jTable1KeyReleased
 
-    public void listarjTable(){
+    public void listarTabela(){
         DefaultTableModel dtmClientes = (DefaultTableModel) jTable1.getModel();
         ClienteDAO cdao = new ClienteDAO();
         
         for(Cliente c: cdao.select()){
-            
-            dtmClientes.addRow(new Object[]{
-                c.getNome(),
-                c.getCpf()
-            });
+            //Adiciona em jTable1 um objeto da lista de objetos recuperados do banco atraves do metodo select().
+            dtmClientes.addRow(new Object[]{c.getNome(), c.getCpf(), c.getEmail(), c.getTel()}); 
         }
     }
     
-    public void AddRow(){ //Adiciona uma linha da jTable1
+    public void AddRow(){ //Adiciona uma linha a jTable1
         DefaultTableModel dtmClientes = (DefaultTableModel) jTable1.getModel();
-        Object[] dados = {campoNome.getText(), campoCPF.getText()};
+        Object[] dados = {campoNome.getText(), campoCPF.getText(), campoEmail.getText(), campoTel.getText()};
         dtmClientes.addRow(dados);       
     }
     
-    public void RemoveRow(){//Deleta uma linha da jTable1, a partir da particularidade de atualizacao da jTable1
+    public void RemoveRow(){//Deleta uma linha de jTable1
             DefaultTableModel dtmClientes = (DefaultTableModel) jTable1.getModel();
             dtmClientes.removeRow(jTable1.getSelectedRow());
     }
@@ -281,16 +329,19 @@ public class TelaCliente extends javax.swing.JFrame {
         });
     }
     
-    public static EditarCliente ec;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField campoCPF;
+    private javax.swing.JTextField campoEmail;
     private javax.swing.JTextField campoNome;
+    private javax.swing.JTextField campoTel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTable jTable1;
     private javax.swing.JScrollPane jTable2;
     // End of variables declaration//GEN-END:variables
